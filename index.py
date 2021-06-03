@@ -1,48 +1,107 @@
 # 필요한 라이브러리 불러오기
+from os import name
 from selenium import webdriver
 import selenium
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.by import By
 import time
 
 # 드라이버 지정
 driver = webdriver.Chrome('./chromedriver')
 
-# 모든 행동에는 time.sleep() 함수를 사용해 2초의 딜레이를 주었다.
+# 모든 행동에는 time.sleep() 함수를 사용해 1초의 딜레이를 주었다.
 # 자가진단 사이트 이동
 driver.get('https://hcs.eduro.go.kr/#/loginHome');
-time.sleep(2)
+time.sleep(0.5)
 
 # 자가진단 참여하기 버튼 클릭
 driver.find_element_by_id('btnConfirm2').click()
-time.sleep(2)
+time.sleep(0.5)
 
 # 학교 버튼 클릭
 driver.find_element_by_id('schul_name_input').click()
-time.sleep(2)
+time.sleep(0.5)
 
 # 시/도 선택
 select = Select(driver.find_element_by_id('sidolabel'))
 select.select_by_visible_text('광주광역시')
-time.sleep(2)
+time.sleep(0.5)
 
 # 학교급 선택
 select = Select(driver.find_element_by_id('crseScCode'))
 select.select_by_visible_text('고등학교')
-time.sleep(2)
+time.sleep(0.5)
 
 # 학교명 입력
 school = '광주소프트웨어마이스터고등학교'
-send = driver.find_element_by_id('orgname')
-send.send_keys(school)
-send.send_keys(Keys.RETURN)
+orgname = driver.find_element_by_id('orgname')
+orgname.send_keys(school)
+orgname.send_keys(Keys.RETURN)
+time.sleep(0.5)
+
+# 학교 a태그 선택
+button = driver.find_element_by_css_selector('a')
+button.click()
+time.sleep(0.5)
+
+# 학교 선택 완료
+button = driver.find_element_by_class_name('layerFullBtn')
+button.click()
+time.sleep(1)
+
+# 이름 입력
+username = '박세윤'
+naemsend = driver.find_element_by_id('user_name_input')
+naemsend.send_keys(username)
+time.sleep(0.5)
+
+# 생년월일 입력
+birthday = '040626'
+birthdaysend = driver.find_element_by_id('birthday_input')
+birthdaysend.send_keys(birthday)
+time.sleep(0.5)
+
+# 확인 버튼 클릭
+button = driver.find_element_by_id('btnConfirm')
+button.click()
+time.sleep(1)
+
+# 비밀번호 입력
+password = '0626'
+passwordsend = driver.find_element_by_class_name('input_text_common')
+passwordsend.send_keys(password)
+time.sleep(0.5)
+
+# 확인 버튼 클릭
+button = driver.find_element_by_id('btnConfirm')
+button.click()
+time.sleep(3)
+
+# 이름 선택
+item = driver.find_element_by_class_name('btn')
+item.click()
 time.sleep(2)
 
-# 학교 선택
-button = driver.find_element_by_id('a')
+# 첫번째 문항 클릭
+button = driver.find_element_by_id('survey_q1a1')
 button.click()
-#driver.execute_script('javascript:;')
-time.sleep(2)
+time.sleep(1)
+
+# 두번째 문항 클릭
+button = driver.find_element_by_id('survey_q2a1')
+button.click()
+time.sleep(1)
+
+# 세번째 문항 클릭
+button = driver.find_element_by_id('survey_q3a1')
+button.click()
+time.sleep(1)
+
+# 제출 버튼 클릭
+button = driver.find_element_by_id('btnConfirm')
+button.click()
+time.sleep(1)
 
 # 자가진단 끝
 driver.quit()
