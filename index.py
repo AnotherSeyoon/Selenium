@@ -10,6 +10,12 @@ import time
 # 드라이버 지정
 driver = webdriver.Chrome('./chromedriver')
 
+# 옵션 생성
+options = webdriver.ChromeOptions()
+
+# 창 숨기는 옵션 추가
+options.add_argument("headless")
+
 # 모든 행동에는 time.sleep() 함수를 사용해 딜레이를 주었다.
 # 자가진단 사이트 이동
 driver.get('https://hcs.eduro.go.kr/#/loginHome')
