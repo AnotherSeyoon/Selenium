@@ -1,6 +1,6 @@
 # Python Selenium
 
-파이썬 셀레늄을 공부해보자
+파이썬 셀레을 공부해보자
 
 ---
 ## install
