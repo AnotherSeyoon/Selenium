@@ -11,7 +11,7 @@
 conda install selenium</code></pre>
 
 일반적인 파이썬 라이브러리와는 다르게, 브라우저별로 selenium webdriver를 다운로드해야 한다.   
-저는 크롬을 사용하겠다.
+나는 크롬을 사용하겠다.
 
 * [Google Chrome](https://sites.google.com/a/chromium.org/chromedriver/downloads)
 * [Firefox](https://github.com/mozilla/geckodriver/releases)
